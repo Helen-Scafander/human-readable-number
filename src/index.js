@@ -38,7 +38,9 @@ module.exports = function toReadable(number) {
         }
         break;
     case 3:
-        if (number.toString().split('')[1] == 0 && number.toString().split('')[2] == 0) {
+        if (digits.hasOwnProperty(number-Number(`${number.toString().split('')[0]}00`))) {
+          return `${digits[number.toString().split('')[0]]} hundred ${digits[number-Number(`${number.toString().split('')[0]}00`)]}`;
+        } else if (number.toString().split('')[1] == 0 && number.toString().split('')[2] == 0) {
           return `${digits[number.toString().split('')[0]]} hundred`;
         } else if (number.toString().split('')[2] == 0) {
           return `${digits[number.toString().split('')[0]]} hundred ${firstParts[number.toString().split('')[1]]}ty`;
